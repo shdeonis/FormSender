@@ -115,6 +115,11 @@
 
             this.beforeSubmit(form);
             const messager = this.messager;
+
+            // Добавляем служебные поля
+            data.append("sreferer", document.referrer);
+            data.append("squery", window.location.search);
+
             this.request(data, function (response) {
                 that.afterSubmit(form);
                 if (response.status) {
